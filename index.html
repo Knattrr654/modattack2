@@ -78,20 +78,13 @@
             90% { clip: rect(129px, 9999px, 94px, 0); }
             100% { clip: rect(80px, 9999px, 146px, 0); }
         }
-        
         .teaser {
             position: relative;
             font-family: 'Press Start 2P', cursive;
             color: #ff0000;
             text-shadow: 0 0 5px #ff0000;
-            animation: blink 1s step-end infinite;
         }
-        
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        
-        .scanline {
+.scanline {
             position: absolute;
             top: 0;
             left: 0;
@@ -120,8 +113,8 @@
     
     <div class="relative z-10 text-center">
         <h1 class="glitch text-4xl md:text-6xl lg:text-8xl mb-8" data-text="MOD ATTACK 2">MOD ATTACK 2</h1>
-        <p class="teaser text-xl md:text-2xl lg:text-3xl">WE ARE COMING IN 11/2025</p>
-    </div>
+        <p class="teaser text-xl md:text-2xl lg:text-3xl" id="countdown">SYNCING LAUNCH TIMER...</p>
+</div>
     
     <div class="absolute bottom-4 right-4 text-green-500 text-xs opacity-50 font-mono">
         SYSTEM INITIALIZED... PREPARING FOR LAUNCH SEQUENCE
@@ -158,6 +151,28 @@
         }
         
         setInterval(createBinary, 100);
+        // Countdown timer
+        function updateCountdown() {
+            const launchDate = new Date('November 14, 2025 18:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                `Beginnt in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = "LAUNCH SEQUENCE INITIATED";
+            }
+        }
+        
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        updateCountdown();
         
         // Feather icons
         document.addEventListener('DOMContentLoaded', () => {
