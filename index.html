@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOD ATTACK 2</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>MOD ATTACK 3</title>
+<script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <style>
@@ -112,8 +112,8 @@
     <div class="scanline"></div>
     
     <div class="relative z-10 text-center">
-        <h1 class="glitch text-4xl md:text-6xl lg:text-8xl mb-8" data-text="MOD ATTACK 2">MOD ATTACK 2</h1>
-        <p class="teaser text-xl md:text-2xl lg:text-3xl" id="countdown">SYNCING LAUNCH TIMER...</p>
+        <h1 class="glitch text-4xl md:text-6xl lg:text-8xl mb-8" data-text="MOD ATTACK 3">MOD ATTACK 3</h1>
+<p class="teaser text-xl md:text-2xl lg:text-3xl" id="countdown">SYNCING LAUNCH TIMER...</p>
 </div>
     
     <div class="absolute bottom-4 right-4 text-green-500 text-xs opacity-50 font-mono">
@@ -140,20 +140,19 @@
         function createBinary() {
             const binary = document.createElement('div');
             binary.className = 'absolute text-green-500 text-xs opacity-30 font-mono';
-            binary.style.left = Math.random() * 100 + 'vw';
+            binary.style.left = Math.random() * 90 + 'vw';
             binary.style.top = Math.random() * 100 + 'vh';
             binary.textContent = Math.random().toString(2).substring(2, 10);
             document.body.appendChild(binary);
-            
             setTimeout(() => {
                 binary.remove();
-            }, 3000);
+            }, 7000);
         }
         
         setInterval(createBinary, 100);
         // Countdown timer
         function updateCountdown() {
-            const launchDate = new Date('November 14, 2025 18:00:00').getTime();
+            const launchDate = new Date('March 20, 2026 18:00:00').getTime();
             const now = new Date().getTime();
             const distance = launchDate - now;
             
@@ -164,10 +163,11 @@
             
             document.getElementById('countdown').innerHTML = 
                 `Beginnt in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
             
             if (distance < 0) {
                 clearInterval(countdownTimer);
-                document.getElementById('countdown').innerHTML = "LAUNCH SEQUENCE INITIATED";
+                document.getElementById('countdown').innerHTML = "Das Porojekt ist gestartet";
             }
         }
         
